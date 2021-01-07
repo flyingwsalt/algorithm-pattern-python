@@ -43,6 +43,8 @@ def postorder_rec(root):
     return
 ```
 
+- 一个解释：https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/python3-da-jia-zao-shang-hao-a-quan-guo-zui-cai-zh/
+
 #### [前序非递归](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)
 
 - 本质上是图的DFS的一个特例，因此可以用栈来实现
