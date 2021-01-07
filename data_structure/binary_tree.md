@@ -87,6 +87,25 @@ class Solution:
         return inorder
 ```
 
+```Python
+# my
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        s = []
+        inorder = []
+        node = root
+
+        while s or node:
+            if node: # if there's still node at the left
+                s.append(node)
+                node = node.left
+            else:
+                node = s.pop()
+                inorder.append(node.val)
+                node = node.right
+        return inorder
+```
+
 #### [后序非递归](https://leetcode-cn.com/problems/binary-tree-postorder-traversal/)
 
 ```Python
@@ -111,6 +130,42 @@ class Solution:
         
         return postorder
 ```
+
+```Python
+# my
+class Solution:
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        # res = []
+        # def postorder(root):
+        #     if not root:
+        #         return
+        #     postorder(root.left)
+        #     postorder(root.right)
+        #     res.append(root.val)
+        
+        # postorder(root)
+        # return res
+
+        s, postorder = [], []
+        node = root
+
+        while s or node:
+            while node:
+                s.append(node)
+                if node.left:
+                    node = node.left
+                else:
+                    node = node.right
+            
+            node = s.pop() # 叶子节点找到了
+            postorder.append(node.val)
+            if s and s[-1].left == node: # 栈里还有别的节点，还有当前叶子节点的爸爸。
+                node = s[-1].right # 就去找当前叶子节点的爸爸的右儿子。
+            else:
+                node = None # 说明没东西了找完了
+        
+        return postorder
+ ```
 
 注意点
 
