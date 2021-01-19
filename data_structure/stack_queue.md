@@ -64,16 +64,19 @@ class Solution:
             if op == '/':
                 abs_result = abs(or1) // abs(or2)
                 return abs_result if or1 * or2 > 0 else -abs_result
+                
+                # AW:
+                # return int(or1 / or2)
         
         stack = []
         
         for token in tokens:
             if token in ['+', '-', '*', '/']:
-                or2 = stack.pop()
+                or2 = stack.pop() # AW: care order
                 or1 = stack.pop()
                 stack.append(comp(or1, token, or2))
             else:
-                stack.append(int(token))
+                stack.append(int(token)) # AW: int
         
         return stack[0]
 ```
@@ -86,6 +89,7 @@ class Solution:
 > s = "2[abc]3[cd]ef", 返回 "abcabccdcdcdef".
 
 - 思路：通过两个栈进行操作，一个用于存数，另一个用来存字符串
+- AW: 1 stack?
 
 ```Python
 class Solution:
