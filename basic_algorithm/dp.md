@@ -371,6 +371,8 @@ class Solution:
 
 ### [word-break](https://leetcode-cn.com/problems/word-break/)
 
+[背包问题](https://leetcode-cn.com/problems/word-break/solution/xi-wang-yong-yi-chong-gui-lu-gao-ding-bei-bao-we-4/)
+
 > 给定一个**非空**字符串  *s*  和一个包含**非空**单词列表的字典  *wordDict*，判定  *s*  是否可以被空格拆分为一个或多个在字典中出现的单词。
 
 ```Python
