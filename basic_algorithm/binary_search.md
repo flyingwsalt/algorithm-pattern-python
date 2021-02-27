@@ -10,6 +10,69 @@
 
 其中，模板 1 和 3 是最常用的，几乎所有二分查找问题都可以用其中之一轻松实现。模板 2 更高级一些，用于解决某些类型的问题。详细的对比可以参考 Leetcode 上的文章：[二分搜索模板](https://leetcode-cn.com/explore/learn/card/binary-search/212/template-analysis/847/)。
 
+## 3 ways
+
+找中间
+```
+int binarySearch(int[] nums, int target) {
+    int left = 0; 
+    int right = nums.length - 1;              // 注意
+
+    while(left <= right) {                    // 注意
+        int mid = left + (right - left) / 2;
+        if(nums[mid] == target)
+            return mid; 
+        else if (nums[mid] < target)
+            left = mid + 1;                 // 注意
+        else if (nums[mid] > target)
+            right = mid - 1;                   // 注意
+    }
+    return -1;
+}
+```
+
+找左边
+```
+int left_bound(int[] nums, int target) {
+    if (nums.length == 0) return -1;
+    int left = 0;
+    int right = nums.length;              // 注意
+    
+    while (left < right) {               // 注意
+        int mid = (left + right) / 2;
+        if (nums[mid] == target) {
+            right = mid;               // 注意!
+        } else if (nums[mid] < target) {
+            left = mid + 1;               // 注意
+        } else if (nums[mid] > target) {
+            right = mid;                 // 注意
+        }
+    }
+    return left;
+}
+```
+
+找右边
+```
+int right_bound(int[] nums, int target) {
+    if (nums.length == 0) return -1;
+    int left = 0;
+    right = nums.length;               // 注意
+    
+    while (left < right) {               // 注意
+        int mid = (left + right) / 2;
+        if (nums[mid] == target) {
+            left = mid + 1;               // 注意!
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid;               // 注意
+        }
+    }
+    return left - 1; // 注意
+}
+```
+
 ### [binary-search](https://leetcode-cn.com/problems/binary-search/)
 
 > 给定一个  n  个元素有序的（升序）整型数组  nums 和一个目标值  target  ，写一个函数搜索  nums  中的 target，如果目标值存在返回下标，否则返回 -1。
