@@ -13,7 +13,7 @@
 ## 3 ways
 
 找中间
-```
+```python
 int binarySearch(int[] nums, int target) {
     int left = 0; 
     int right = nums.length - 1;              // 注意
@@ -32,7 +32,7 @@ int binarySearch(int[] nums, int target) {
 ```
 
 找左边
-```
+```python
 int left_bound(int[] nums, int target) {
     if (nums.length == 0) return -1;
     int left = 0;
@@ -53,7 +53,7 @@ int left_bound(int[] nums, int target) {
 ```
 
 找右边
-```
+```python
 int right_bound(int[] nums, int target) {
     if (nums.length == 0) return -1;
     int left = 0;
@@ -75,7 +75,7 @@ int right_bound(int[] nums, int target) {
 
 对于寻找左右边界的二分搜索，常见的手法是使用左闭右开的「搜索区间」，我们还根据逻辑将「搜索区间」全都统一成了两端都闭，便于记忆，只要修改两处即可变化出三种写法：
 
-```
+```python
 int binary_search(int[] nums, int target) {
     int left = 0, right = nums.length - 1; 
     while(left <= right) {
